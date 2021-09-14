@@ -22,31 +22,41 @@ function clean(cb) {
 
 function scss(cb) {
   gulp
-    .src("styles/*.scss")
+    .src("styles/main.scss")
     .pipe(sass()) // Using gulp-sass
     .pipe(csso())
     .pipe(gulpif(".css", cssnano()))
     .pipe(rename({ basename: "style", extname: ".min.css" }))
-    .pipe(gulp.dest("dist/styles"));
+    .pipe(gulp.dest("dist"));
   console.log("scss processed");
+  cb();
+}
+
+function bootstrap(cb) {
+  gulp.src("styles/bootstrap.min.css").pipe(gulp.dest("dist"));
   cb();
 }
 
 function javascript(cb) {
   const tsProject = ts.createProject("tsconfig.json");
-  const tsResult = gulp.src("ts/**/*.ts").pipe(tsProject());
-
-  tsResult.js
+  const tsResult = gulp
+    .src("ts/**/*.ts")
+    .pipe(tsProject())
+    .js.pipe(concat("bundle.js"))
     .pipe(babel())
-    .pipe(gulp.src("vendor/*.js"))
     .pipe(uglify())
     .pipe(rename({ basename: "main", extname: ".min.js" }))
-    .pipe(gulp.dest("dist"))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
+    .pipe(gulp.dest("dist"));
+  // .pipe(concat("bundle.ts"))
+  // .pipe(babel())
+  // .pipe(uglify())
+  // .pipe(rename({ basename: "main", extname: ".min.js" }))
+  // .pipe(gulp.dest("dist"))
+  // .pipe(
+  //   browserSync.reload({
+  //     stream: true,
+  //   })
+  // );
   console.log("typescrypt processed");
   cb();
 }
@@ -97,21 +107,15 @@ function watch() {
     .watch("styles/**/*.scss", { events: "all" }, scss)
     .on("change", browserSync.reload);
   gulp
-    .watch("ts/**/*.js", { events: "all" }, javascript)
+    .watch("ts/**/*.ts", { events: "all" }, javascript)
     .on("change", browserSync.reload);
-}
-
-function bootstrap(cb) {
-  gulp.src("styles/bootstrap.min.css").pipe(gulp.dest("dist/styles"));
-  cb();
 }
 
 exports.default = gulp.series(images, fonts, serve, watch);
 
 exports.build = gulp.series(
   clean,
-  gulp.parallel(scss, javascript),
-  bootstrap,
+  gulp.parallel(scss, bootstrap, javascript),
   useIndex,
   images,
   fonts

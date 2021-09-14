@@ -1,0 +1,15 @@
+/*
+* Variables should go first
+*/
+@import "./variables.scss";
+
+/**
+* Utilidades
+*/
+@import "./typings.scss";
+
+@import "./body.scss";
+
+@import "./boxes.scss";
+@import "./clicker.scss";
+@import "./upgrader.scss";

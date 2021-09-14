@@ -1,0 +1,8 @@
+@import "./variables.scss";
+
+.upgradeBox {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $yellow;
+}

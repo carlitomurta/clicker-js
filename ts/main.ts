@@ -1,6 +1,5 @@
-import { Global } from "./global";
+import { Game } from "./game";
 
-export class Main {
-  constructor() {}
-  test = new Global("1.0.0");
-}
+const game = new Game();
+
+game.initGame();

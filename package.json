@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A generic clicker game made with Typescript",
   "main": "ts/main.ts",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CarlitoMurta/clicker-js.git"
