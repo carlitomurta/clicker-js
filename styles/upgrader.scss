@@ -8,6 +8,9 @@
 }
 
 .upgradeButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: rem(24);
   border-top: rem(2) solid $red;
   border-left: rem(2) solid $red;
