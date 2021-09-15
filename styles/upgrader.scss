@@ -6,3 +6,16 @@
   overflow-x: hidden;
   background-color: $yellow;
 }
+
+.upgradeButton {
+  padding: rem(24);
+  border-top: rem(2) solid $red;
+  border-left: rem(2) solid $red;
+  border-right: rem(2) solid $red;
+  &:first-child {
+    border-bottom: 0;
+  }
+  &:last-child {
+    border-bottom: rem(2) solid $red;
+  }
+}

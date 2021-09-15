@@ -5,19 +5,21 @@
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $blue;
-  border: 4px solid $primary;
+  border: rem(8) solid $red;
 }
 
 .clickButton {
   width: rem(120);
   height: rem(120);
-  background-color: $purple;
+  background-color: $green;
   border-radius: 100%;
-  padding: rem(48) rem(36);
+  padding: rem(52) 0;
+  text-align: center;
   margin: rem(120) auto;
   font-size: rem(16);
   font-weight: bold;
   cursor: pointer;
+  user-select: none;
 }
 
 .valueBox {
