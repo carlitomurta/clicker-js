@@ -19,7 +19,7 @@
   "homepage": "https://github.com/CarlitoMurta/clicker-js#readme",
   "scripts": {
     "dev": "npx webpack serve",
-    "build": "npx webpack --mode none"
+    "build": "npx webpack --mode production"
   },
   "dependencies": {
     "node-sass": "^6.0.1"
